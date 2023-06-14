@@ -1,8 +1,8 @@
 from datetime import datetime
 import os
 
-path_to_obsidian = r'C:\Users\DE\Obsidian\Obsidian'  # Указать путь до Obsidian
-
+# path_to_obsidian = r'C:\Users\DE\Obsidian\Obsidian'  # Указать путь до Obsidian
+path_to_obsidian = os.path.abspath(r'C:\Users\DE\Obsidian\Obsidian')
 
 def read_last_str(path_to_file: str) -> str:
     """Читает последнюю строку в файле и удаляет '*'"""

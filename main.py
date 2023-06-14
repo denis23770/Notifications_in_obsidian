@@ -6,7 +6,9 @@ from basic_notifications import start_bot_notifications
 from birthday_notification import start_bot_birthday_notifications
 from calendar_notifications import start_bot_calendar_notifications
 import os
+from dotenv import load_dotenv, find_dotenv
 
+load_dotenv(find_dotenv())
 bot = telebot.TeleBot(os.getenv('TOKEN'))  # Токен телеграмм-бота
 my_id = os.getenv('my_id')  # id пользователя в телеграмме
 
@@ -21,7 +23,7 @@ def start(message):
 
 def add_basic_notifications(link_f):
     while True:
-        time.sleep(50)
+        time.sleep(3)
         notifications = start_bot_notifications()
         if len(notifications) != 0:
             link_f.put(notifications)
@@ -29,7 +31,7 @@ def add_basic_notifications(link_f):
 
 def add_calendar_notifications(link_f):
     while True:
-        time.sleep(50)
+        time.sleep(3)
         notifications = start_bot_calendar_notifications()
         if len(notifications) != 0:
             link_f.put(notifications)
@@ -37,14 +39,14 @@ def add_calendar_notifications(link_f):
 
 def add_birthday_notifications(link_f):
     while True:
-        time.sleep(300)
+        time.sleep(4)
         notifications = start_bot_birthday_notifications()
         if len(notifications) != 0:
             link_f.put(notifications)
 
 
 def send_message(link_f):
-    time.sleep(20)
+    time.sleep(1)
     while True:
         basic_notifications = link_f.get()
         if len(basic_notifications) != 0:
