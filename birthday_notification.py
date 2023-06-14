@@ -76,18 +76,21 @@ class CalendarNotifications:
                 self.list_for_bot.append(f'Осталось 31 день до {parameters["title"]}')
             if date_notification <= datetime.date(datetime.now()):
                 self.list_for_bot.append(f'Сегодня {parameters["title"]}')
-                file = open(file, 'w', encoding='utf8')
-                file.write('---\n')
+                list_strs_name = file.split('.')
+                list_strs_name[0] = f"{file.split('.')[0]}_"
+                new_file = '.'.join(list_strs_name)
+                file_n = open(new_file, 'w', encoding='utf8')
+                file_n.write('---\n')
                 for parameter_k, parameter_v in parameters.items():
                     if parameter_k == 'date':
                         old_date = datetime.strptime(parameter_v, '%Y-%m-%d')
                         new_date = old_date + relativedelta(years=+1)
-                        file.write(f'{parameter_k}: {datetime.date(new_date)}\n')
+                        file_n.write(f'{parameter_k}: {datetime.date(new_date)}\n')
                     else:
-                        file.write(f'{parameter_k}: {parameter_v} \n')
-                file.write('---\n')
-                file.close()
-
+                        file_n.write(f'{parameter_k}: {parameter_v} \n')
+                file_n.write('---\n')
+                file_n.close()
+                os.remove(file)
 
 def start_bot_birthday_notifications():
     notifications = CalendarNotifications()
