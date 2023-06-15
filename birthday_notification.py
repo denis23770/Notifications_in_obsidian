@@ -92,6 +92,7 @@ class CalendarNotifications:
                 file_n.close()
                 os.remove(file)
 
+
 def start_bot_birthday_notifications():
     notifications = CalendarNotifications()
     notifications.generate_list_md(path_to_obsidian)

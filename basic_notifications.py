@@ -1,8 +1,8 @@
 from datetime import datetime
 import os
 
-# path_to_obsidian = r'C:\Users\DE\Obsidian\Obsidian'  # Указать путь до Obsidian
-path_to_obsidian = os.path.abspath(r'C:\Users\DE\Obsidian\Obsidian')
+path_to_obsidian = os.path.abspath(r'C:\Users\DE\Obsidian\Obsidian')  # Указать путь до Obsidian
+
 
 def read_last_str(path_to_file: str) -> str:
     """Читает последнюю строку в файле и удаляет '*'"""
@@ -57,7 +57,7 @@ class BasicNotifications:
             self.notifications[file] = last_str
 
     def notification_time(self):
-        """"""
+        """Добавляет текст уведомлений в список, который передается в main для отправки в сообщения в телеграмм"""
         for file, notifications in self.notifications.items():
             for notification in notifications:
                 if notification == '':
