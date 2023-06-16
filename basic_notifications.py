@@ -62,8 +62,6 @@ class BasicNotifications:
             for notification in notifications:
                 if notification == '':
                     continue
-                elif notification == 'Уведомление отправлено':
-                    continue
                 else:
                     try:
                         time_notification = datetime.strptime(
@@ -85,8 +83,6 @@ class BasicNotifications:
             for notification in notifications:
                 if notification == '':
                     break
-                elif notification == 'Уведомление отправлено':
-                    continue
                 else:
                     try:
                         time_notification = datetime.strptime(
@@ -94,9 +90,6 @@ class BasicNotifications:
                             '%Y-%m-%d %H:%M')
                         if time_notification > datetime.now():
                             list_last_str.append(notification)
-                        else:
-                            list_last_str.append('Уведомление отправлено')
-                            continue
                     except (ValueError, IndexError):
                         break
 
